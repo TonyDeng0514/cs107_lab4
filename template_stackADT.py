@@ -8,17 +8,20 @@ stackADT: an implementation of a stack represented as listADT
 >>> assert stk.top() == "omega"
 """
 
-# import the listADT
+from template_listADT import listADT
 
 class stackADT:
-    def __init__(self):
-        pass
+    def __init__(self, head = None, rest = None):
+        if head == None:            # empty constructor
+            self.rep = listADT()
+        else:                       # extending constructor
+            self.rep = listADT(head) + rest.rep
 
     def empty(self):    # returns True iff the stack is empty
-        pass
+        return self.rep == listADT()
 
     def top(self):      # returns the value at the top of the stack
-        pass
+        return self.rep.head
 
     def push(self, x):  # mutates the stack to add x at the top
         pass
