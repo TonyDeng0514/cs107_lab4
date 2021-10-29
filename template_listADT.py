@@ -17,6 +17,8 @@ more test cases!!!!
 >>> assert not lst1.rest().empty()
 >>> assert lst1.head() == "alpha"
 
+>>> a = listADT()
+>>> assert a.head() == None
 """
 
 class listADT:
@@ -30,7 +32,10 @@ class listADT:
         return self.rep == []  # empty list
 
     def head(self):
-        return self.rep[0]    # the first element of the list
+        if len(self.rep) == 0:
+            return None
+        else:
+            return self.rep[0]    # the first element of the list
 
     def rest(self):
         if len(self.rep) > 1:
