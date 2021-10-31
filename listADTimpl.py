@@ -11,14 +11,15 @@ listADT: an implementation of a list represented as a Python list
 more test cases!!!!
 
 >>> lst1 = listADT("beta", lst)
->>> assert not lst.empty()
->>> lst1 = listADT("alpha", lst1)
 >>> assert not lst1.empty()
+>>> lst1 = listADT("alpha", lst1)
 >>> assert not lst1.rest().empty()
 >>> assert lst1.head() == "alpha"
-
+>>> assert lst1.__str__() == "['alpha', 'beta', 'alpha']"
 >>> a = listADT()
 >>> assert a.head() == None
+>>> assert not lst1.__eq__(lst)
+
 """
 
 class listADT:
@@ -26,10 +27,11 @@ class listADT:
         if head == None:            # empty constructor
             self.rep = []
         else:                       # extending constructor
+            assert type(rest) == listADT
             self.rep = [head] + rest.rep
 
     def empty(self) -> bool:
-        return self.rep == []  # empty list
+        return self.rep == []  # return a bool depending on if the list is empty.
 
     def head(self):
         if len(self.rep) == 0:
@@ -46,7 +48,8 @@ class listADT:
             return listADT()
 
     def __eq__(self, other) -> bool:     # compare two things
-        return self.rep == other.rep
+        assert type(other) == listADT
+        return self.rep == other.rep     # return a bool 
 
 
     def __str__(self) -> str:              # "abstraction function" (to text)
