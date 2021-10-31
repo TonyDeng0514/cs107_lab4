@@ -13,7 +13,7 @@ See the test cases for a more precise definition.
 [1]
 
 >>> print(span(["error"]))    # or empty list, different assertion tripped
-Exception raised: ...
+Exception raised:...
 """
 
 def intListPredicate(lst:list)-> bool:      # linear complexity O(len(lst))
@@ -41,8 +41,11 @@ def spanNaive(prices: list) -> list:             # quadratic complexity O(len(pr
 
     return spans
 
+from stackADTimpl import *
+
 def spanWstacks(prices: list) -> list:             # better complexity O(???)
-    pass
+    assert len(prices) > 0
+    assert intListPredicate(prices)
 
 span = spanNaive            # set to spanWstacks to test your code
 

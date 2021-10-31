@@ -10,7 +10,7 @@ stackADT: an implementation of a stack represented as listADT
 >>> assert stk.empty()
 """
 
-from template_listADT import listADT
+from listADTimpl import listADT
 
 class stackADT:
     def __init__(self, top = None, rest = None):

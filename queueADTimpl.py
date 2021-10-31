@@ -6,9 +6,11 @@ queueADT: an implementation of a queue represented as stackADT
 >>> que.enqueue("chi")
 >>> assert not que.empty()
 >>> assert que.front() == "chi"
+>>> que.dequeue()
+>>> assert que.empty()
 """
 
-from template_stackADT import *
+from stackADTimpl import *
 
 class queueADT:
     def __init__(self, front=None, rest=None):
@@ -25,13 +27,13 @@ class queueADT:
         if self.rep == stackADT():
             return None
         else:
-            self.rep.top()
+            return self.rep.top()
 
     def enqueue(self, x):  # mutates the queue to add x at the back
         self.rep.rep.rep.append(x)
 
     def dequeue(self):      # mutates the queue to remove x from the front
-        self.rep = self.rest.rep
+        self.rep.rep = self.rep.rep.rest()
 
 if __name__ == "__main__":
     import doctest
