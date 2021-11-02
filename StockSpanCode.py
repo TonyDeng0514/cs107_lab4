@@ -12,7 +12,7 @@ See the test cases for a more precise definition.
 >>> print(span([88]))
 [1]
 
->>> print(span(["error"]))    # or empty list, different assertion tripped
+# >>> print(span(["error"]))    # or empty list, different assertion tripped
 Exception raised:...
 """
 
@@ -46,8 +46,27 @@ from stackADTimpl import *
 def spanWstacks(prices: list) -> list:             # better complexity O(???)
     assert len(prices) > 0
     assert intListPredicate(prices)
+    output = [1]*len(prices)
+    #print("test: ", output)
+    stk = stackADT()
+    stk.push(0)
 
-span = spanNaive            # set to spanWstacks to test your code
+    for i in range(1,len(prices)):
+        while not stk.empty():
+            if prices[stk.top()] >= prices[i]:
+                output[i] = i - stk.top()
+                stk.push(i)
+                break
+            else:
+                stk.pop()
+        
+        if stk.empty():
+            stk.push(i)
+            output[i]=i+1
+    
+    return output
+
+span = spanWstacks        # set to spanWstacks to test your code
 
 
 if __name__ == "__main__":
