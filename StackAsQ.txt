@@ -1,4 +1,6 @@
-I would say the disadvantage is a little easier to see.
-Stack is first in last out, where as queue is first in first out.
-So, when implementing pop for stack, it could be hard to find the correct way.
-However, the advantage is that the push is the same for both.
+Comparing advantages and disadvantages when implementing stack on list and on queue.
+
+I would say that implementing on list is probably easier, since stack is first in last out, so when pushing element, we are adding element at the end, for that part, both list and queque are the same.
+However, when popping elements, list can easily remove the last element, whereas for queue, dequeue is a bit harder since queue is first in first out.
+
+Except from pushing and popping, I don't see significant different between the two.
